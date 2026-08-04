@@ -1,0 +1,51 @@
+{
+    "id": "leo",
+    "display_name": "Leo",
+
+    "species": "Lion",
+
+    "gender": "male",
+
+    "age": "child",
+
+    "role": "hero",
+
+    "voice_profile": "leo",
+
+    "appearance": {
+        "body_color": "Golden Yellow",
+        "mane_color": "Orange",
+        "eye_color": "Brown",
+        "nose_color": "Pink",
+        "height": "Small Cub"
+    },
+
+    "personality": {
+        "traits": [
+            "Brave",
+            "Helpful",
+            "Funny",
+            "Kind"
+        ],
+
+        "likes": [
+            "Helping Others",
+            "Playing"
+        ],
+
+        "dislikes": [
+            "Bullies",
+            "Lies"
+        ]
+    },
+
+    "relationships": {
+        "friends": [],
+        "family": [],
+        "enemies": []
+    },
+
+    "default_emotion": "happy",
+
+    "catchphrase": "Let's help!"
+}

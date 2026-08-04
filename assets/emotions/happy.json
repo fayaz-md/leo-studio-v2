@@ -1,0 +1,19 @@
+{
+    "id": "happy",
+
+    "pitch": "+5Hz",
+
+    "rate": "+8%",
+
+    "volume": "+0%",
+
+    "pause": "short",
+
+    "laugh_before": false,
+
+    "laugh_after": false,
+
+    "cry_before": false,
+
+    "cry_after": false
+}

@@ -1,0 +1,13 @@
+{
+    "id": "leo",
+
+    "provider": "edge",
+
+    "voice": "hi-IN-MadhurNeural",
+
+    "pitch": "+8%",
+
+    "rate": "+5%",
+
+    "volume": "+0%"
+}
