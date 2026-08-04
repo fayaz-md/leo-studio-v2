@@ -27,13 +27,15 @@ class CharacterManager:
 
         data = {
             "id": character.id,
-            "name": character.name,
+            "display_name": character.display_name,
             "species": character.species,
             "gender": character.gender,
             "age": character.age,
             "role": character.role,
-            "voice": character.voice,
+            "voice_profile": character.voice_profile,
             "personality": character.personality,
+            "appearance": character.appearance,
+            "relationships": character.relationships,
             "catchphrase": character.catchphrase,
             "default_emotion": character.default_emotion,
         }
@@ -66,3 +68,35 @@ class CharacterManager:
             )
 
         return characters
+
+    def get(self, character_id):
+
+        if not self.exists(character_id):
+            return None
+
+        return self.load(character_id)
+
+    def get_characters_for_scene(self, scene):
+
+        scene_text = " ".join([
+            scene.title,
+            scene.narration,
+            " ".join(
+                dialogue.speaker
+                for dialogue in scene.dialogues
+            ),
+        ]).lower()
+
+        matched = []
+
+        for character in self.all():
+
+            names = {
+                character.id.lower(),
+                character.display_name.lower(),
+            }
+
+            if any(name in scene_text for name in names):
+                matched.append(character)
+
+        return matched
