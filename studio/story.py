@@ -1,6 +1,6 @@
 from studio.providers.gemini_provider import GeminiProvider
 from studio.story_parser import StoryParser
-
+from studio.prompt_builder import PromptBuilder
 
 class StoryGenerator:
 
@@ -9,7 +9,10 @@ class StoryGenerator:
         self.provider = GeminiProvider()
 
         self.parser = StoryParser()
-
+        self.prompt_builder = PromptBuilder()
+# TODO:
+# Remove this method after Story Engine V3 is fully validated.
+# Prompt generation has moved to PromptBuilder.build_story_prompt().
     def build_prompt(self, story_idea):
 
         return f"""
@@ -70,7 +73,9 @@ Return JSON in this format:
 
     def generate(self, story_idea):
 
-        prompt = self.build_prompt(story_idea)
+        prompt = self.prompt_builder.build_story_prompt(
+            story_idea=story_idea
+        )
 
         raw_response = self.provider.generate(prompt)
 

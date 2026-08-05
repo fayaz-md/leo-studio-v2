@@ -2,6 +2,7 @@ from studio.story import StoryGenerator
 from studio.serializer import StorySerializer
 from studio.utils import create_project, save_text
 from studio.config import PROJECTS_DIR
+from studio.character_processor import CharacterProcessor
 
 
 def build_script(story):
@@ -71,6 +72,17 @@ def main():
     generator = StoryGenerator()
 
     story = generator.generate(idea)
+
+    print("Processing characters...")
+
+    character_processor = CharacterProcessor()
+
+    characters = character_processor.process_story(story)
+
+    print(f"Characters detected: {len(characters)}")
+
+    for character in characters:
+        print(f"  ✓ {character['display_name']} ({character['species']})")
 
     project = create_project(
         idea,
