@@ -1,73 +1,196 @@
-# 📜 Changelog
+# 📜 Leo Studio Changelog
 
-All notable changes to Leo Studio are documented in this file.
+All notable changes to Leo Studio will be documented in this file.
 
-The project follows milestone-based versioning.
+The project follows a milestone-based development approach.
 
 ---
 
-## v2.3.0 – Asset Pipeline Complete
+# v3.0.0-beta
 
-Release Date: August 2026
+## Release Date
+
+August 2026
+
+## Highlights
+
+First complete end-to-end AI animation pipeline.
 
 ### Added
 
-- Timeline Builder
-- Timeline Generator
-- Character detection
-- Prompt generation workflow
-- Project documentation structure
-- Production-ready project layout
+- Story generation
+- Character generation
+- Voice generation
+- Image prompt generation
+- Timeline generation
+- FFmpeg video rendering
+- Final MP4 generation
+- Initial documentation
 
-### Improved
+### Status
 
-- Character Manager updated for V2 models
-- Prompt Builder integration
-- Timeline generation based on audio duration
-
-### Validated
-
-- Meta AI image generation workflow
-- Character consistency across scenes
-- End-to-end asset generation pipeline
+Completed
 
 ---
 
-## v2.2.0 – Story & Asset Generation
+# v3.1.0
 
-### Added
+## Focus
 
-- Story Generator
-- Story Parser
-- Prompt Builder
-- Prompt Generator
-- Voice Manager
-- Edge TTS Provider
-- Gemini Story Provider
+Story Engine
 
----
+### Planned
 
-## v2.1.0 – Foundation
+- Better story prompts
+- Strong opening hook
+- More character dialogue
+- Flexible scene count
+- Improved pacing
+- Educational takeaway
+- Signature ending
+- Better YouTube Shorts optimization
 
-### Added
+### Status
 
-- Project configuration
-- Data models
-- Serializer
-- Utilities
-- Character system foundation
+In Progress
 
 ---
 
-## Upcoming
+# v3.2.0
 
-### v3.0.0
+## Focus
+
+Character Engine
+
+### Planned
+
+- Universal Character System
+- Character Registry
+- Character Profiles
+- Character Locking
+- Permanent Voice Assignment
+- Relationship Management
+- Character Lifecycle
+- Configurable Main Character
+
+### Status
 
 Planned
 
-- Video Engine
-- FFmpeg Provider
-- Scene Renderer
-- Video Renderer
-- MP4 Export
-- Ken Burns camera effects
+---
+
+# v3.3.0
+
+## Focus
+
+Image Engine
+
+### Planned
+
+- Character consistency
+- Location consistency
+- Reference image support
+- Better prompt generation
+- Expression-aware prompts
+- Camera-aware prompts
+
+### Status
+
+Planned
+
+---
+
+# v3.4.0
+
+## Focus
+
+Audio Engine
+
+### Planned
+
+- Character voices
+- Emotion-aware speech
+- Background music
+- Ambient sounds
+- Sound effects
+- Audio balancing
+
+### Status
+
+Planned
+
+---
+
+# v3.5.0
+
+## Focus
+
+Video Engine
+
+### Planned
+
+- Camera movement
+- Ken Burns effect
+- Smooth transitions
+- Subtitle burn-in
+- Thumbnail generation
+- Rendering improvements
+
+### Status
+
+Planned
+
+---
+
+# v4.0.0
+
+## Focus
+
+Multi-Series Platform
+
+### Planned
+
+- Leo Adventures
+- Leo Science Lab
+- Leo Animal World
+- Leo History Time
+- Leo Space Explorer
+- Configurable series profiles
+
+### Status
+
+Future
+
+---
+
+# v5.0.0
+
+## Focus
+
+Knowledge Engine
+
+### Planned
+
+- Science knowledge
+- History knowledge
+- Geography knowledge
+- Animal knowledge
+- Educational templates
+- Fact verification
+
+### Status
+
+Future
+
+---
+
+# Documentation Milestone
+
+The following documents define the project:
+
+- ARCHITECTURE.md
+- PROJECT_STRUCTURE.md
+- ROADMAP.md
+- QUALITY_GUIDELINES.md
+- LEO_UNIVERSE.md
+- CHANGELOG.md

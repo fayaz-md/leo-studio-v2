@@ -1,172 +1,250 @@
-# 🗺️ Leo Studio Roadmap
+# 🗺️ Leo Studio Development Roadmap
 
-## Vision
-
-Leo Studio aims to become a complete AI-powered animation production studio capable of generating professional-quality animated episodes with minimal manual effort.
+Version: 1.0
 
 ---
 
-# Version History
+# Vision
 
-## v2.0.0 - Foundation ✅
+Leo Studio is being developed as a reusable AI Animation Production Platform capable of generating high-quality animated stories and educational content with consistent characters, reusable worlds, and automated production workflows.
 
-Completed
-
-- Project structure
-- Configuration
-- Models
-- Serialization
-- Utilities
+The roadmap focuses on delivering production-ready features while maintaining a stable architecture.
 
 ---
 
-## v2.1.0 - Story Engine ✅
+# Development Principles
 
-Completed
+Every release should:
 
-- Story generation
-- Scene generation
-- Dialogue generation
-- Gemini integration
-
----
-
-## v2.2.0 - Asset Pipeline ✅
-
-Completed
-
-- Character Manager
-- Voice Manager
-- Edge TTS integration
-- Prompt Builder
-- Prompt Generator
-- Manual Meta AI workflow
-- Timeline Builder
+- Improve the final video quality.
+- Maintain backward compatibility where possible.
+- Follow the frozen architecture.
+- Be validated by generating a complete animated episode.
+- Prefer reusable components over hardcoded solutions.
 
 ---
 
-## v2.3.0 - Production Pipeline ✅
+# Version 3.1 — Story Engine
 
-Completed
+Goal:
 
-- Timeline generation
-- Asset validation
-- Production-ready folder structure
-- Documentation foundation
+Improve storytelling quality.
+
+Features:
+
+- Strong opening hook
+- Better pacing
+- More character dialogue
+- Less narrator dependency
+- Educational or moral takeaway
+- Natural 45–60 second runtime
+- Improved prompt engineering
+- Flexible scene count (typically 6–8 scenes)
+- Signature series ending
+
+Status:
+
+Planned
 
 ---
 
-# v3.0.0 - Video Engine 🚧
+# Version 3.2 — Character Engine
 
-Current Goal
+Goal:
 
-- FFmpeg Provider
-- Video Renderer
-- Scene Renderer
+Create a persistent character system.
+
+Features:
+
+- Universal Character System
+- Character Registry
+- Character Profiles
+- Character Locking
+- Voice Assignment
+- Personality Profiles
+- Relationship Management
+- Character Lifecycle
+- Automatic Character Creation
+- Main Character Configuration
+
+Status:
+
+Planned
+
+---
+
+# Version 3.3 — Image Engine
+
+Goal:
+
+Improve visual consistency.
+
+Features:
+
+- Character appearance injection
+- Character reference support
+- Location consistency
+- Better prompt generation
+- Expression-aware prompts
+- Camera-aware prompts
+
+Status:
+
+Planned
+
+---
+
+# Version 3.4 — Audio Engine
+
+Goal:
+
+Improve audio quality.
+
+Features:
+
+- Character voices
+- Voice consistency
+- Emotion-aware speech
+- Background music
+- Ambient sounds
+- Sound effects
+- Audio balancing
+
+Status:
+
+Planned
+
+---
+
+# Version 3.5 — Video Engine
+
+Goal:
+
+Create professional animated videos.
+
+Features:
+
+- Camera movement
 - Ken Burns effects
 - Fade transitions
-- MP4 generation
-
-Output:
-
-```
-episode.mp4
-```
-
----
-
-# v3.1.0 - Subtitle Engine
-
-Planned
-
-- Automatic subtitle generation
-- Subtitle timing
-- Burned-in subtitles
-- SRT export
-
----
-
-# v3.2.0 - Music Engine
-
-Planned
-
-- Background music
-- Music selection
-- Volume ducking
-- Mood-based soundtrack
-
----
-
-# v3.3.0 - Image Providers
-
-Planned
-
-- OpenAI Images
-- Gemini Images
-- ComfyUI
-- Stable Diffusion
-
-Manual Meta AI will remain supported.
-
----
-
-# v4.0.0 - Full Automation
-
-Vision
-
-Single command episode generation.
-
-```
-Story
-↓
-
-Voice
-↓
-
-Images
-↓
-
-Timeline
-↓
-
-Video
-↓
-
-YouTube-ready MP4
-```
-
----
-
-# v4.5.0 - Smart Director
-
-Planned
-
-- Automatic camera movement
-- Dynamic scene pacing
-- Intelligent transitions
-- Emotion-aware editing
-
----
-
-# v5.0.0 - Leo Studio Pro
-
-Long-term Vision
-
-- Multiple animation series
-- Multiple recurring characters
-- AI Director
-- AI Producer
-- AI Editor
+- Subtitle burn-in
+- Improved rendering pipeline
 - Thumbnail generation
-- YouTube publishing support
+- Better visual pacing
+
+Status:
+
+Planned
 
 ---
 
-# Guiding Principles
+# Version 4.0 — Multi-Series Platform
 
-- Modular architecture
-- Provider pattern
-- Character consistency
-- Professional output quality
-- Extensible design
-- Automation-first
+Goal:
+
+Support multiple animated series.
+
+Examples:
+
+- Leo Adventures
+- Leo Science Lab
+- Leo Animal World
+- Leo History Time
+- Leo Space Explorer
+
+Features:
+
+- Series profiles
+- Template engine
+- Configurable main character
+- Series-specific production rules
+
+Status:
+
+Planned
+
+---
+
+# Version 5.0 — Knowledge Engine
+
+Goal:
+
+Generate educational content using verified knowledge.
+
+Features:
+
+- Science knowledge
+- History knowledge
+- Geography knowledge
+- Animal knowledge
+- Educational templates
+- Fact verification
+- Learning objectives
+
+Status:
+
+Future
+
+---
+
+# Version 6.0 — Publishing Platform
+
+Goal:
+
+Automate content publishing.
+
+Features:
+
+- Thumbnail generation
+- Metadata generation
+- Hashtag generation
+- YouTube upload package
+- Playlist support
+- Multi-language publishing
+
+Status:
+
+Future
+
+---
+
+# Long-Term Vision
+
+Leo Studio should evolve into a complete AI animation platform capable of producing:
+
+- Entertainment
+- Educational content
+- Storytelling
+- Short-form videos
+- Multi-series productions
+- Persistent character universes
+
+without requiring architectural redesign.
+
+---
+
+# Success Criteria
+
+Leo Studio is considered successful when it can:
+
+- Produce complete episodes with minimal manual work.
+- Maintain consistent characters across episodes.
+- Support multiple animated series.
+- Generate educational and entertaining content.
+- Scale using reusable assets and modular engines.
+
+---
+
+# Roadmap Status
+
+Architecture:
+
+Frozen
+
+Current Focus:
+
+Story Engine Version 3.1
+
+Next Milestone:
+
+Universal Character Engine

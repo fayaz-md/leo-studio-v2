@@ -1,22 +1,37 @@
-# 📁 Leo Studio V2 Project Structure
+# 📁 Leo Studio Project Structure
 
-## Root Directory
+Version: 1.0
 
-```
+---
+
+# Purpose
+
+This document defines the official folder structure of Leo Studio.
+
+Every file and folder has a single responsibility.
+
+Future development should follow this structure to keep the project modular, scalable, and easy to maintain.
+
+---
+
+# Project Structure
+
+```text
 LeoStudioV2/
 
-│
 ├── assets/
 ├── docs/
 ├── projects/
 ├── studio/
+├── tests/
 ├── .venv/
-│
+
 ├── leo_studio.py
 ├── generate_voice.py
 ├── generate_prompts.py
 ├── generate_timeline.py
-│
+├── render_video.py
+
 ├── requirements.txt
 ├── README.md
 └── .gitignore
@@ -24,57 +39,133 @@ LeoStudioV2/
 
 ---
 
+# Root Directory
+
+Contains application entry points.
+
+These scripts are executed directly by the user.
+
+Examples:
+
+- leo_studio.py
+- generate_voice.py
+- generate_prompts.py
+- generate_timeline.py
+- render_video.py
+
+Business logic should never be implemented here.
+
+---
+
 # assets/
 
-Stores reusable resources.
+Stores reusable production assets.
 
-```
+```text
 assets/
 
-characters/
-voices/
-music/
-fonts/
-logos/
+├── characters/
+├── locations/
+├── props/
+├── series/
+├── knowledge/
+├── music/
+└── sfx/
 ```
+
+Assets belong to Leo Studio, not individual projects.
 
 ---
 
 ## characters/
 
-One JSON file per character.
+Contains permanent character profiles.
 
-Example:
+Future structure:
 
+```text
+characters/
+
+registry.json
+
+leo/
+
+profile.json
+
+reference.png
+
+rabbit_mimi/
+
+profile.json
+
+reference.png
 ```
-leo.json
-rabbit.json
-monkey.json
-```
 
-These files contain:
-
-- Appearance
-- Personality
-- Voice profile
-- Relationships
-- Default emotion
+Every recurring character is stored only once.
 
 ---
 
-## voices/
+## locations/
 
-Voice configuration.
+Reusable world locations.
 
-Future:
+Examples:
 
-```
-voices/
+- Forest
+- River
+- School
+- Village
+- Space Station
 
-leo.json
+---
 
-rabbit.json
-```
+## props/
+
+Reusable objects.
+
+Examples:
+
+- Balloon
+- Basket
+- Rocket
+- Telescope
+- Treasure Chest
+
+---
+
+## series/
+
+Series configuration.
+
+Examples:
+
+- Leo Adventures
+- Leo Science Lab
+- Leo History Time
+- Leo Space Explorer
+
+Each series defines:
+
+- Main Character
+- Template
+- Genre
+- Audience
+- Rules
+
+---
+
+## knowledge/
+
+Future educational knowledge base.
+
+Examples:
+
+- Science
+- Geography
+- History
+- Animals
+
+Knowledge articles are reusable across episodes.
 
 ---
 
@@ -82,15 +173,11 @@ rabbit.json
 
 Background music library.
 
-Future:
+---
 
-```
-happy.mp3
+## sfx/
 
-sad.mp3
-
-adventure.mp3
-```
+Sound effects library.
 
 ---
 
@@ -98,157 +185,201 @@ adventure.mp3
 
 Project documentation.
 
-```
-ARCHITECTURE.md
+Examples:
 
-PROJECT_STRUCTURE.md
+- ARCHITECTURE.md
+- PROJECT_STRUCTURE.md
+- ROADMAP.md
+- QUALITY_GUIDELINES.md
+- LEO_UNIVERSE.md
+- CHANGELOG.md
 
-ROADMAP.md
-
-CHANGELOG.md
-
-DEVELOPMENT_GUIDE.md
-```
+Documentation should always reflect the current architecture.
 
 ---
 
 # projects/
 
-Each generated episode has its own folder.
+Generated project workspace.
 
 Example:
 
-```
+```text
+projects/
+
 Leo_helps_a_lost_rabbit/
 
 story.json
-
-timeline.json
-
-script.md
-
-prompts/
 
 images/
 
 audio/
 
-final/
+timeline.json
+
+final_video.mp4
 ```
 
----
-
-## prompts/
-
-```
-scene_001.txt
-
-scene_002.txt
-```
-
----
-
-## images/
-
-```
-scene_001.png
-
-scene_002.png
-```
-
----
-
-## audio/
-
-```
-scene_001.mp3
-
-scene_002.mp3
-```
-
----
-
-## final/
-
-Future rendered videos.
-
-```
-episode.mp4
-
-thumbnail.png
-```
+Each project is self-contained.
 
 ---
 
 # studio/
 
-Core Leo Studio source code.
+Contains all application logic.
 
-```
+Future structure:
+
+```text
 studio/
 
-config.py
+engines/
 
-models.py
+providers/
 
-serializer.py
+templates/
 
-story.py
+managers/
 
-story_parser.py
+models/
 
-character_manager.py
-
-voice_manager.py
-
-prompt_builder.py
-
-timeline.py
+utils/
 ```
+
+---
+
+## engines/
+
+Core business logic.
+
+Examples:
+
+- Story Engine
+- Character Engine
+- Image Engine
+- Audio Engine
+- Timeline Engine
+- Video Engine
+- Knowledge Engine
+
+Each engine has one responsibility.
 
 ---
 
 ## providers/
 
-Provider implementations.
+External service integrations.
 
-```
-providers/
+Examples:
 
-gemini_provider.py
+- Gemini
+- Edge TTS
+- FFmpeg
+- Meta AI (future)
+- OpenAI (future)
 
-edge_provider.py
-
-video_provider.py
-```
-
-Future:
-
-```
-openai_provider.py
-
-comfy_provider.py
-
-elevenlabs_provider.py
-
-ffmpeg_provider.py
-```
+Providers should be replaceable.
 
 ---
 
-# Design Rules
+## templates/
 
-- One responsibility per module.
-- Provider pattern for external services.
-- Generated files are stored only inside `projects/`.
-- Reusable resources belong in `assets/`.
-- Documentation belongs in `docs/`.
-- Core business logic belongs in `studio/`.
+Story templates.
+
+Examples:
+
+- Adventure
+- Science
+- History
+- Quiz
+- Facts
+
+Templates define how stories are generated.
 
 ---
 
-# Version
+## managers/
 
-```
-Leo Studio v2.3.0
-```
+High-level coordination components.
+
+Examples:
+
+- CharacterManager
+- CharacterRegistry
+- ProjectManager
+- VoiceManager
+
+Managers coordinate assets and engines.
+
+---
+
+## models/
+
+Shared data models.
+
+Examples:
+
+- Story
+- Scene
+- Character
+- Timeline
+
+---
+
+## utils/
+
+Reusable helper utilities.
+
+Examples:
+
+- File utilities
+- JSON helpers
+- Validation
+- Logging
+
+---
+
+# tests/
+
+Future automated tests.
+
+Examples:
+
+- Unit Tests
+- Integration Tests
+- Rendering Tests
+
+---
+
+# Development Rules
+
+- Every folder has one responsibility.
+- Business logic belongs inside the studio package.
+- Assets must remain reusable.
+- Projects must remain independent.
+- Providers should be replaceable.
+- New features should fit into the existing structure rather than creating new top-level folders.
+
+---
+
+# Future Growth
+
+The project structure is designed to support:
+
+- Multiple animated series
+- Universal character system
+- Educational content
+- Reusable worlds
+- AI provider replacement
+- Automated publishing
+- Scalable asset libraries
+
+---
+
+# Status
+
+Version: 1.0
+
+Status: Frozen
+
+Future development should extend this structure rather than redesign it.
