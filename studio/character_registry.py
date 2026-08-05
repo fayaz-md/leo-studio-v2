@@ -1,4 +1,6 @@
 import json
+import re
+import unicodedata
 from pathlib import Path
 
 
@@ -22,14 +24,26 @@ class CharacterRegistry:
     # Utilities
     # -----------------------------------------------------
 
+    def _normalize_name(self, name: str) -> str:
+
+        name = unicodedata.normalize("NFKC", name.strip())
+
+        name = name.lower()
+
+        name = re.sub(r"[^\w\u0900-\u097f]+", "_", name)
+
+        return name.strip("_")
+
     def _character_file(self, name: str) -> Path:
-        return self.registry_path / f"{name.lower()}.json"
+
+        return self.registry_path / f"{self._normalize_name(name)}.json"
 
     # -----------------------------------------------------
     # CRUD
     # -----------------------------------------------------
 
     def exists(self, name: str) -> bool:
+
         return self._character_file(name).exists()
 
     def load(self, name: str):
@@ -44,12 +58,17 @@ class CharacterRegistry:
 
     def save(self, character: dict):
 
-        name = character["display_name"]
-
-        file = self._character_file(name)
+        file = self._character_file(
+            character["display_name"]
+        )
 
         with open(file, "w", encoding="utf-8") as f:
-            json.dump(character, f, indent=4, ensure_ascii=False)
+            json.dump(
+                character,
+                f,
+                indent=4,
+                ensure_ascii=False,
+            )
 
     # -----------------------------------------------------
     # Registry
@@ -58,21 +77,23 @@ class CharacterRegistry:
     def create_if_missing(
         self,
         name,
-        character_type="unknown",
+        character_type="Unknown",
     ):
 
-        if self.exists(name):
-            return self.load(name)
+        existing = self.load(name)
+
+        if existing:
+            return existing
 
         character = {
 
-            "id": name.lower(),
+            "id": self._normalize_name(name),
 
             "display_name": name,
 
             "species": character_type,
 
-            "voice_profile": name.lower(),
+            "voice_profile": self._normalize_name(name),
 
             "appearance": {},
 
@@ -80,7 +101,7 @@ class CharacterRegistry:
 
             "relationships": {},
 
-            "locked": False
+            "locked": False,
         }
 
         self.save(character)
@@ -91,7 +112,7 @@ class CharacterRegistry:
 
         characters = []
 
-        for file in self.registry_path.glob("*.json"):
+        for file in sorted(self.registry_path.glob("*.json")):
 
             with open(file, "r", encoding="utf-8") as f:
 
