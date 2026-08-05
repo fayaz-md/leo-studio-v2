@@ -19,6 +19,23 @@ class CharacterProcessor:
 
         self.registry = CharacterRegistry()
 
+        self.character_types = {
+
+            # English
+            "leo": "Lion",
+            "meera": "Human",
+            "robbie": "Robot",
+            "robot": "Robot",
+            "priya": "Human",
+
+            # Hindi
+            "लियो": "Lion",
+            "मीरा": "Human",
+            "रॉबी": "Robot",
+            "रोबी": "Robot",
+            "रोबी": "Robot",
+        }
+
     # --------------------------------------------------
     # Public API
     # --------------------------------------------------
@@ -60,6 +77,9 @@ class CharacterProcessor:
                 if speaker.lower() == "narrator":
                     continue
 
+                if speaker in ("Narrator", "वाचक", "सूत्रधार"):
+                    continue
+
                 names[speaker] = True
 
         return list(names.keys())
@@ -70,20 +90,10 @@ class CharacterProcessor:
 
     def detect_type(self, name):
 
-        lookup = {
-
-            "leo": "Lion",
-
-            "meera": "Human",
-
-            "priya": "Human",
-
-            "robbie": "Robot",
-
-            "robot": "Robot",
-        }
-
-        return lookup.get(
-            name.lower(),
-            "Unknown",
+        return self.character_types.get(
+            name.strip().lower(),
+            self.character_types.get(
+                name.strip(),
+                "Unknown",
+            ),
         )
