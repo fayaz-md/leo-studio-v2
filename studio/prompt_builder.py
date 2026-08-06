@@ -6,12 +6,15 @@ from studio.config import (
     DEFAULT_SERIES,
 )
 
+from studio.story_schema import StorySchema
+
 
 class PromptBuilder:
     """
     Central Prompt Builder for Leo Studio.
 
-    Responsibilities:
+    Responsibilities
+    ----------------
     - Story Prompt Generation
     - Image Prompt Generation
     - Character Prompt Generation (Future)
@@ -43,94 +46,191 @@ class PromptBuilder:
         target_duration=DEFAULT_DURATION,
     ):
 
+        json_contract = StorySchema.json_contract()
+
         return f"""
-You are an award-winning Pixar writer and children's storyteller.
+You are an award-winning Pixar writer, children's storyteller and animation director.
 
 Return ONLY valid JSON.
 
 Do NOT return markdown.
 
-Language:
+======================================================
+LANGUAGE
+======================================================
+
 {language}
 
-Series:
+======================================================
+SERIES
+======================================================
+
 {series}
 
-Main Character:
+======================================================
+MAIN CHARACTER
+======================================================
+
 {main_character}
 
-Target Audience:
+======================================================
+TARGET AUDIENCE
+======================================================
+
 Children aged 4–10 years.
 
-Target Duration:
+======================================================
+TARGET DURATION
+======================================================
+
 Approximately {target_duration}–60 seconds.
 
 ======================================================
-STORY RULES
+STORY REQUIREMENTS
 ======================================================
 
-• Begin with a powerful hook in the first scene.
+• Begin with a strong hook.
 • Never begin with "One day..."
-• Build curiosity immediately.
 • Every scene must move the story forward.
-• Prefer character dialogue over long narration.
+• Prefer dialogue over narration.
+• Keep narration concise.
 • Show emotions through actions.
-• Finish with a satisfying ending.
-• Include a positive moral or educational takeaway.
-• End with the official Leo series sign-off.
-• Generate 6–8 scenes depending on the story.
+• Include a meaningful educational takeaway.
+• End with Leo's official sign-off.
+• Create 6–8 scenes.
 
 ======================================================
 CHARACTER RULES
 ======================================================
 
-Leo is the hero of Leo Adventures.
+Leo is ALWAYS:
 
-Leo is ALWAYS an animated lion cub.
-
-Leo's permanent appearance:
-
-• Species: Lion Cub
-• Fur: Golden-yellow
-• Mane: Small fluffy orange mane
-• Eyes: Large expressive brown eyes
-• Nose: Pink
-• Tail: Lion tail with orange tuft
-
-These characteristics NEVER change.
+• A small lion cub
+• Golden-yellow fur
+• Fluffy orange mane
+• Pink nose
+• Large expressive brown eyes
 
 Leo is NEVER:
 
-- Human
-- Boy
-- Child
-- Kid
-- Teenager
+• Human
+• Boy
+• Child
+• Teenager
 
 Never change Leo's species.
 
 Never invent clothes for Leo.
 
-Always refer to Leo by his name.
+Always use "Leo" instead of:
+- the lion
+- the cub
+- the animal
 
-GOOD:
+Recurring characters must always keep:
+- the same name
+- the same species
+- the same personality
+- the same appearance
+- the same role
 
-Leo smiles happily.
+======================================================
+MANDATORY JSON REQUIREMENTS
+======================================================
 
-Leo points towards the rainwater tank.
+Your response MUST contain ALL of these arrays.
 
-Leo jumps with excitement.
+They are REQUIRED.
 
-BAD:
+Never leave them empty.
 
-The cub smiles...
+If any array is empty, regenerate your answer before responding.
 
-The lion smiles...
+------------------------------------------------------
+characters
+------------------------------------------------------
 
-The animal smiles...
+Include every important recurring character.
 
-The boy smiles...
+Each character MUST contain:
 
+- id
+- display_name
+- species
+- gender
+- age
+- role
+
+Example
+
+{{
+"id":"leo",
+"display_name":"Leo",
+"species":"Lion",
+"gender":"Male",
+"age":"Cub",
+"role":"Hero"
+}}
+
+{{
+"id":"meera",
+"display_name":"Meera",
+"species":"Human",
+"gender":"Female",
+"age":"Child",
+"role":"Friend"
+}}
+
+{{
+"id":"robbie",
+"display_name":"Robbie",
+"species":"Robot",
+"gender":"Unknown",
+"age":"Unknown",
+"role":"Helper"
+}}
+
+------------------------------------------------------
+locations
+------------------------------------------------------
+
+Return every important location.
+
+Example
+
+[
+{{
+"id":"forest",
+"name":"Forest"
+}}
+]
+
+------------------------------------------------------
+props
+------------------------------------------------------
+
+Return every important object.
+
+Example
+
+[
+{{
+"id":"solar_panel",
+"name":"Solar Panel"
+}}
+]
+
+Never return:
+
+"characters": []
+
+Never return:
+
+"locations": []
+
+Never return:
+
+"props": []
 ======================================================
 IMAGE PROMPT RULES
 ======================================================
@@ -138,16 +238,15 @@ IMAGE PROMPT RULES
 The image_prompt should describe ONLY:
 
 • Character actions
-• Character emotions
-• Character interaction
+• Character expressions
 • Environment
 • Lighting
-• Camera
+• Camera angle
 • Composition
 
-Do NOT describe recurring character appearance.
+Never describe recurring character appearance.
 
-Leo Studio automatically injects character appearance.
+Leo Studio automatically injects appearance.
 
 ======================================================
 VISUAL QUALITY
@@ -156,11 +255,11 @@ VISUAL QUALITY
 Every image should include:
 
 • Cinematic composition
-• Camera angle
-• Lighting
-• Character expressions
+• Pixar-quality 3D animation
 • Dynamic poses
-• Pixar-quality animation style
+• Beautiful lighting
+• Family-friendly atmosphere
+• Rich colors
 
 ======================================================
 STORY IDEA
@@ -172,35 +271,24 @@ STORY IDEA
 OUTPUT FORMAT
 ======================================================
 
-Return ONLY valid JSON using EXACTLY this structure:
+Return ONLY valid JSON.
 
-{{
-    "title":"",
-    "summary":"",
-    "youtube_title":"",
-    "description":"",
-    "tags":[""],
-    "ending_message":"",
-    "scenes":[
-        {{
-            "number":1,
-            "title":"",
-            "narration":"",
-            "image_prompt":"",
-            "animation_prompt":"",
-            "camera":"",
-            "music":"",
-            "sfx":"",
-            "dialogues":[
-                {{
-                    "speaker":"",
-                    "emotion":"happy",
-                    "text":""
-                }}
-            ]
-        }}
-    ]
-}}
+The JSON is INVALID if:
+
+- characters is empty
+- locations is empty
+- props is empty
+
+If any of these arrays would be empty,
+generate the story again before responding.
+
+Use EXACTLY this JSON structure.
+
+Do not omit any top-level fields.
+
+Do not leave required arrays empty.
+
+{json_contract}
 """
 
     # ======================================================
@@ -227,29 +315,40 @@ Return ONLY valid JSON using EXACTLY this structure:
 
             description_parts = []
 
-            # Character species
-            species = getattr(character, "species", None)
+            species = getattr(
+                character,
+                "species",
+                "",
+            )
 
             if species:
                 description_parts.append(species)
 
-            # Character appearance
-            appearance = character.appearance
-
-            description_parts.extend(
-                value
-                for value in appearance.values()
-                if value
+            appearance = getattr(
+                character,
+                "appearance",
+                {},
             )
+
+            if appearance:
+
+                description_parts.extend(
+                    value
+                    for value in appearance.values()
+                    if value
+                )
 
             description = ", ".join(description_parts)
 
             if description:
                 prompt_parts.append(description)
 
-        prompt_parts.append(scene.image_prompt)
+        prompt_parts.append(
+            scene.image_prompt
+        )
 
         if scene.camera:
+
             prompt_parts.append(
                 f"Camera: {scene.camera}"
             )

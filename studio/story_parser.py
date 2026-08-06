@@ -5,6 +5,8 @@ from studio.models import (
     Metadata,
     Settings,
     Character,
+    Location,
+    Prop,
     Scene,
     Dialogue,
 )
@@ -57,46 +59,132 @@ class StoryParser:
             target_platform=DEFAULT_TARGET_PLATFORM,
         )
 
+        # -----------------------------------------
+        # Characters
+        # -----------------------------------------
+
         characters = []
 
-        scenes = []
+        for c in data.get("characters", []):
 
-        for scene in data["scenes"]:
+            characters.append(
+                Character(
+                    id=c.get("id", ""),
+                    display_name=c.get("display_name", ""),
+                    species=c.get("species", ""),
+                    gender=c.get("gender", ""),
+                    age=c.get("age", ""),
+                    role=c.get("role", ""),
+                    voice_profile=c.get("voice_profile", ""),
+                    personality=c.get("personality", {}),
+                    appearance=c.get("appearance", {}),
+                    relationships=c.get("relationships", {}),
+                    catchphrase=c.get("catchphrase", ""),
+                    default_emotion=c.get("default_emotion", "happy"),
+                    locked=c.get("locked", False),
+                )
+            )
+
+        # -----------------------------------------
+        # Locations
+        # -----------------------------------------
+
+        locations = []
+
+        for location in data.get("locations", []):
+
+            locations.append(
+                Location(
+                    id=location.get("id", ""),
+                    name=location.get("name", ""),
+                    description=location.get(
+                        "description",
+                        "",
+                    ),
+                )
+            )
+
+        # -----------------------------------------
+        # Props
+        # -----------------------------------------
+
+        props = []
+
+        for prop in data.get("props", []):
+
+            props.append(
+                Prop(
+                    id=prop.get("id", ""),
+                    name=prop.get("name", ""),
+                    description=prop.get(
+                        "description",
+                        "",
+                    ),
+                )
+            )
+
+        scenes = []
+                # -----------------------------------------
+        # Scenes
+        # -----------------------------------------
+
+        for scene in data.get("scenes", []):
 
             dialogues = []
 
-            for d in scene.get("dialogues", []):
+            for dialogue in scene.get("dialogues", []):
 
                 dialogues.append(
                     Dialogue(
-                        speaker=d["speaker"],
-                        emotion=d.get("emotion", "happy"),
-                        text=d["text"],
+                        speaker=dialogue.get(
+                            "speaker",
+                            "",
+                        ),
+                        emotion=dialogue.get(
+                            "emotion",
+                            "happy",
+                        ),
+                        text=dialogue.get(
+                            "text",
+                            "",
+                        ),
                     )
                 )
 
             scenes.append(
                 Scene(
-                    id=f"scene_{scene['number']:03}",
-                    number=scene["number"],
-                    title=scene["title"],
-                    narration=scene["narration"],
-                    image_prompt=scene["image_prompt"],
+                    id=f"scene_{scene.get('number', 0):03}",
+                    number=scene.get(
+                        "number",
+                        0,
+                    ),
+                    title=scene.get(
+                        "title",
+                        "",
+                    ),
+                    narration=scene.get(
+                        "narration",
+                        "",
+                    ),
+                    image_prompt=scene.get(
+                        "image_prompt",
+                        "",
+                    ),
                     animation_prompt=scene.get(
                         "animation_prompt",
-                        ""
+                        "",
                     ),
                     camera=scene.get(
                         "camera",
-                        ""
+                        "",
                     ),
                     music=scene.get(
                         "music",
-                        ""
+                        "",
                     ),
                     sfx=scene.get(
                         "sfx",
-                        ""
+                        "",
                     ),
                     dialogues=dialogues,
                 )
@@ -106,5 +194,7 @@ class StoryParser:
             metadata=metadata,
             settings=settings,
             characters=characters,
+            locations=locations,
+            props=props,
             scenes=scenes,
         )
