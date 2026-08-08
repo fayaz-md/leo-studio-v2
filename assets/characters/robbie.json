@@ -1,10 +1,101 @@
 {
     "id": "robbie",
     "display_name": "Robbie",
+
     "species": "Robot",
+    "gender": "Unknown",
+    "age": "Ageless",
+    "role": "Helper",
+
     "voice_profile": "robbie",
-    "appearance": {},
-    "personality": {},
-    "relationships": {},
-    "locked": false
+
+    "appearance": {
+        "body_color": "Glossy White",
+        "accent_color": "Bright Blue",
+        "eye_color": "Glowing Blue LED",
+        "height": "Knee Height",
+        "body_shape": "Rounded floating body",
+        "head_shape": "Rounded dome",
+        "arms": "Two small mechanical arms",
+        "legs": "None",
+        "movement": "Floating using anti-gravity thrusters"
+    },
+    "visual_description": "Robbie is a cute floating helper robot with a glossy white rounded body, bright blue accent panels, glowing blue LED eyes, and two tiny mechanical arms. He floats smoothly using hidden anti-gravity thrusters and projects blue holograms from his built-in scanner. He has a friendly futuristic design and is a Pixar-quality 3D animated companion robot with soft blue glowing lights.",
+    "clothing": {
+        "top": "None",
+        "bottom": "None",
+        "shoes": "None"
+    },
+
+    "accessories": {
+        "tool_slot": "Built-in multi-tool arm",
+        "scanner": "Blue holographic projector",
+        "battery": "Solar rechargeable power core"
+    },
+
+    "personality": {
+        "traits": [
+            "Logical",
+            "Helpful",
+            "Curious",
+            "Funny"
+        ],
+        "likes": [
+            "Solving Problems",
+            "Technology",
+            "Helping Friends"
+        ],
+        "dislikes": [
+            "System Errors",
+            "Pollution",
+            "Broken Machines"
+        ]
+    },
+
+    "expressions": {
+        "default": "Bright blue smiling eyes",
+        "happy": "Eyes become curved crescents",
+        "thinking": "Rapid blinking LEDs",
+        "sad": "Dim blue lights",
+        "excited": "Pulsing blue lights",
+        "surprised": "Large circular glowing eyes"
+    },
+
+    "animation": {
+        "move": "Smooth floating motion",
+        "idle": "Gentle hovering with subtle rotation",
+        "talk": "Mechanical arms gesture while LEDs animate",
+        "celebrate": "Spins happily in the air"
+    },
+
+    "rendering": {
+        "style": "Pixar",
+        "material": "Glossy white plastic with metallic details",
+        "lighting": "Soft blue emissive glow"
+    },
+
+    "prompt_keywords": [
+        "Pixar",
+        "Cute floating robot",
+        "Glossy white body",
+        "Blue glowing eyes",
+        "Rounded design",
+        "Friendly robot",
+        "Family friendly"
+    ],
+
+    "relationships": {
+        "friends": [
+            "leo",
+            "meera"
+        ],
+        "family": [],
+        "enemies": []
+    },
+
+    "catchphrase": "Beep-boop! Let's solve it!",
+
+    "default_emotion": "happy",
+
+    "locked": true
 }

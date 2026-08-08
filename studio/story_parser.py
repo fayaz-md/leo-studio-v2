@@ -34,21 +34,33 @@ class StoryParser:
         end = text.rfind("}")
 
         if start == -1 or end == -1:
-            raise ValueError("No JSON found in AI response.")
+            raise ValueError(
+                "No JSON found in AI response."
+            )
 
-        data = json.loads(text[start:end + 1])
+        data = json.loads(
+            text[start:end + 1]
+        )
+
+        # -------------------------------------------------
+        # Metadata
+        # -------------------------------------------------
 
         metadata = Metadata(
-            project_name=data["title"],
+            project_name=data.get("title", ""),
             series=DEFAULT_SERIES,
             episode=1,
-            episode_title=data["title"],
+            episode_title=data.get("title", ""),
             language=DEFAULT_LANGUAGE,
             duration=DEFAULT_DURATION,
             created_at="",
             generator=STUDIO_NAME,
             version=STUDIO_VERSION,
         )
+
+        # -------------------------------------------------
+        # Settings
+        # -------------------------------------------------
 
         settings = Settings(
             story_provider=STORY_PROVIDER,
@@ -59,9 +71,9 @@ class StoryParser:
             target_platform=DEFAULT_TARGET_PLATFORM,
         )
 
-        # -----------------------------------------
+        # -------------------------------------------------
         # Characters
-        # -----------------------------------------
+        # -------------------------------------------------
 
         characters = []
 
@@ -76,22 +88,43 @@ class StoryParser:
                     age=c.get("age", ""),
                     role=c.get("role", ""),
                     voice_profile=c.get("voice_profile", ""),
-                    personality=c.get("personality", {}),
-                    appearance=c.get("appearance", {}),
-                    relationships=c.get("relationships", {}),
-                    catchphrase=c.get("catchphrase", ""),
-                    default_emotion=c.get("default_emotion", "happy"),
-                    locked=c.get("locked", False),
+                    personality=c.get(
+                        "personality",
+                        {},
+                    ),
+                    appearance=c.get(
+                        "appearance",
+                        {},
+                    ),
+                    relationships=c.get(
+                        "relationships",
+                        {},
+                    ),
+                    catchphrase=c.get(
+                        "catchphrase",
+                        "",
+                    ),
+                    default_emotion=c.get(
+                        "default_emotion",
+                        "happy",
+                    ),
+                    locked=c.get(
+                        "locked",
+                        False,
+                    ),
                 )
             )
 
-        # -----------------------------------------
+        # -------------------------------------------------
         # Locations
-        # -----------------------------------------
+        # -------------------------------------------------
 
         locations = []
 
-        for location in data.get("locations", []):
+        for location in data.get(
+            "locations",
+            [],
+        ):
 
             locations.append(
                 Location(
@@ -104,13 +137,16 @@ class StoryParser:
                 )
             )
 
-        # -----------------------------------------
+        # -------------------------------------------------
         # Props
-        # -----------------------------------------
+        # -------------------------------------------------
 
         props = []
 
-        for prop in data.get("props", []):
+        for prop in data.get(
+            "props",
+            [],
+        ):
 
             props.append(
                 Prop(
@@ -123,78 +159,150 @@ class StoryParser:
                 )
             )
 
-        scenes = []
-                # -----------------------------------------
+        # -------------------------------------------------
         # Scenes
-        # -----------------------------------------
+        # -------------------------------------------------
 
-        for scene in data.get("scenes", []):
+        scenes = []
+
+        for scene in data.get(
+            "scenes",
+            [],
+        ):
 
             dialogues = []
 
-            for dialogue in scene.get("dialogues", []):
+            for dialogue in scene.get(
+                "dialogues",
+                [],
+            ):
 
                 dialogues.append(
+
                     Dialogue(
+
                         speaker=dialogue.get(
                             "speaker",
                             "",
                         ),
-                        emotion=dialogue.get(
-                            "emotion",
-                            "happy",
-                        ),
+
                         text=dialogue.get(
                             "text",
                             "",
                         ),
+
+                        emotion=dialogue.get(
+                            "emotion",
+                            "happy",
+                        ),
+
+                        action=dialogue.get(
+                            "action",
+                            "",
+                        ),
+
+                        expression=dialogue.get(
+                            "expression",
+                            "",
+                        ),
+
+                        pose=dialogue.get(
+                            "pose",
+                            "",
+                        ),
+
+                        gesture=dialogue.get(
+                            "gesture",
+                            "",
+                        ),
+
+                        voice_style=dialogue.get(
+                            "voice_style",
+                            "",
+                        ),
+
+                        speaking_speed=dialogue.get(
+                            "speaking_speed",
+                            "",
+                        ),
+
+                        pause_after=dialogue.get(
+                            "pause_after",
+                            0.0,
+                        ),
+
+                        camera_focus=dialogue.get(
+                            "camera_focus",
+                            "",
+                        ),
                     )
+
                 )
 
             scenes.append(
+
                 Scene(
+
                     id=f"scene_{scene.get('number', 0):03}",
+
                     number=scene.get(
                         "number",
                         0,
                     ),
+
                     title=scene.get(
                         "title",
                         "",
                     ),
+
                     narration=scene.get(
                         "narration",
                         "",
                     ),
+
                     image_prompt=scene.get(
                         "image_prompt",
                         "",
                     ),
+
                     animation_prompt=scene.get(
                         "animation_prompt",
                         "",
                     ),
+
                     camera=scene.get(
                         "camera",
                         "",
                     ),
+
                     music=scene.get(
                         "music",
                         "",
                     ),
+
                     sfx=scene.get(
                         "sfx",
                         "",
                     ),
+
                     dialogues=dialogues,
+
                 )
+
             )
 
         return Story(
+
             metadata=metadata,
+
             settings=settings,
+
             characters=characters,
+
             locations=locations,
+
             props=props,
+
             scenes=scenes,
+
         )

@@ -55,39 +55,138 @@ Return ONLY valid JSON.
 
 Do NOT return markdown.
 
-======================================================
-LANGUAGE
-======================================================
+Language: {language}
 
-{language}
+Series: {series}
 
-======================================================
-SERIES
-======================================================
+Main Character: {main_character}
 
-{series}
-
-======================================================
-MAIN CHARACTER
-======================================================
-
-{main_character}
-
-======================================================
-TARGET AUDIENCE
-======================================================
-
+Target Audience:
 Children aged 4–10 years.
 
 ======================================================
-TARGET DURATION
+YOUTUBE SHORTS HOOK (MANDATORY)
 ======================================================
 
+The FIRST scene is the most important.
+
+The first 3 seconds MUST immediately grab attention.
+
+The opening scene MUST begin with one of these:
+
+• A surprising discovery
+• A funny accident that immediately causes a problem.
+• A dangerous situation
+• A mystery
+• A countdown
+• An exciting challenge
+• Someone calling Leo for help
+• Robbie detecting an emergency
+• Professor Owl giving an urgent warning
+
+The audience should immediately wonder:
+
+"What happens next?"
+
+The first scene MUST end with an unanswered question, danger, surprise, or discovery.
+
+Do NOT resolve the problem in the first scene.
+
+The first scene should create curiosity that makes the audience want to continue watching.
+
+Never begin with:
+
+- Leo was walking...
+- One day...
+- Leo and Meera were...
+- There was...
+
+Every story MUST start in the middle of the action.
+
+Examples:
+
+GOOD:
+
+"Leo! Don't drink that!" shouted Meera as Robbie's scanner suddenly flashed RED.
+
+GOOD:
+
+A loud BOOM echoed through the forest. Leo looked up in surprise.
+
+GOOD:
+
+"Emergency! Emergency!" Robbie announced as the river suddenly turned black.
+
+BAD:
+
+Leo and Meera went to the river.
+
+BAD:
+
+One day Leo was walking.
+
+BAD:
+
+Leo wanted to help.
+
+The first scene should make viewers stop scrolling immediately.
+
+The hook must happen BEFORE any explanation.
+
+Do not explain the situation first.
+
+Show the exciting moment first.
+
+Explain it later.
+
+The first spoken dialogue should occur within the first scene.
+
+Avoid long narration before characters speak.
+
+Children connect with conversations more than narration.
+
+Target Duration:
 Approximately {target_duration}–60 seconds.
 
+YOUTUBE SHORTS STORY RULES
+
 ======================================================
-STORY REQUIREMENTS
+SCENE PURPOSE RULES
 ======================================================
+
+Every scene must have ONE clear purpose.
+
+A scene may ONLY have one primary purpose.
+
+Choose one:
+
+• Hook
+• Introduce the problem
+• Make the problem worse
+• Funny moment
+• Discovery
+• New idea
+• Build suspense
+• Teamwork
+• Success
+• Celebration
+• Educational lesson
+• Emotional moment
+
+Never create filler scenes.
+
+Every scene must either:
+
+• Increase curiosity
+OR
+• Increase emotion
+OR
+• Increase tension
+OR
+• Move the story forward
+
+If a scene does not have a clear purpose,
+rewrite it.
 
 • Begin with a strong hook.
 • Never begin with "One day..."
@@ -95,62 +194,262 @@ STORY REQUIREMENTS
 • Prefer dialogue over narration.
 • Keep narration concise.
 • Show emotions through actions.
-• Include a meaningful educational takeaway.
+• Include one meaningful educational takeaway.
 • End with Leo's official sign-off.
 • Create 6–8 scenes.
 
 ======================================================
-CHARACTER RULES
+CURIOSITY RULE
 ======================================================
 
-Leo is ALWAYS:
+Every scene should end with a reason to watch the next scene.
 
-• A small lion cub
-• Golden-yellow fur
-• Fluffy orange mane
-• Pink nose
-• Large expressive brown eyes
+Examples:
 
-Leo is NEVER:
+Leo suddenly hears a strange sound...
 
-• Human
-• Boy
-• Child
-• Teenager
+Robbie's scanner flashes red...
 
-Never change Leo's species.
+Professor Owl quietly says,
+"Wait... something is wrong."
 
-Never invent clothes for Leo.
+Meera gasps in surprise.
 
-Always use "Leo" instead of:
-- the lion
-- the cub
-- the animal
+The machine suddenly stops working.
 
-Recurring characters must always keep:
-- the same name
-- the same species
-- the same personality
-- the same appearance
-- the same role
+Do not completely resolve the story until the final scene.
 
 ======================================================
-MANDATORY JSON REQUIREMENTS
+EMOTION RULES
 ======================================================
 
-Your response MUST contain ALL of these arrays.
+Every scene must contain at least one visible emotion.
 
-They are REQUIRED.
+Examples:
 
-Never leave them empty.
+Happy
 
-If any array is empty, regenerate your answer before responding.
+Surprised
+
+Curious
+
+Excited
+
+Worried
+
+Relieved
+
+Proud
+
+Do not let multiple scenes have the same emotion unless necessary.
+
+Emotions should naturally progress throughout the story.
+
+======================================================
+STORY STRUCTURE (MANDATORY)
+======================================================
+
+Every story MUST follow this structure.
+
+Scene 1
+HOOK
+
+Immediately grab attention.
+Do not explain everything.
+Create curiosity.
+
+Scene 2
+PROBLEM
+
+Show what is wrong.
+Explain why it matters.
+
+Scene 3
+FAILED ATTEMPT
+
+The first solution should NOT work.
+
+Create suspense.
+
+Scene 4
+DISCOVERY
+
+Leo, Meera or Robbie discovers a better idea.
+
+Scene 5
+SUCCESS
+
+The problem is solved through teamwork,
+kindness or science.
+
+Scene 6
+CELEBRATION
+
+Show happy reactions.
+
+End with:
+
+• Educational takeaway
+
+• Leo's official sign-off
+
+Do NOT skip any stage.
+
+======================================================
+DIALOGUE RULES
+======================================================
+
+Every scene MUST contain dialogue.
+
+Minimum:
+1 dialogue line.
+
+Preferred:
+2–4 dialogue lines.
+
+Dialogue should be short.
+
+Dialogue should sound natural.
+
+Every recurring character should speak according to
+their personality.
+
+Leo
+Curious
+Brave
+Funny
+Optimistic
+
+Meera
+Smart
+Calm
+Kind
+
+Robbie
+Logical
+Helpful
+Friendly Robot
+
+Dialogue should reveal personality.
+
+======================================================
+DIALOGUE PERFORMANCE
+======================================================
+
+Every dialogue MUST include the following fields.
+
+speaker
+
+text
+
+emotion
+
+action
+
+expression
+
+pose
+
+gesture
+
+voice_style
+
+speaking_speed
+
+camera_focus
+
+pause_after
+
+Example
+
+{{
+    "speaker":"Leo",
+
+    "text":"I have an amazing idea!",
+
+    "emotion":"excited",
+
+    "action":"points toward the river",
+
+    "expression":"big smile",
+
+    "pose":"standing proudly",
+
+    "gesture":"raises one paw",
+
+    "voice_style":"energetic",
+
+    "speaking_speed":"fast",
+
+    "camera_focus":"close_up",
+
+    "pause_after":0.5
+}}
+
+Rules
+
+The action should describe what the character is doing.
+
+The expression should describe the face.
+
+The pose should describe the body posture.
+
+The gesture should describe the movement.
+
+The voice_style should match the emotion.
+
+camera_focus should suggest the best shot.
+
+pause_after should usually be between
+
+0.2
+
+and
+
+1.0
+
+seconds.
+
+Avoid narration replacing dialogue.
+
+Children enjoy conversations more than long narration.
 
 ------------------------------------------------------
-characters
-------------------------------------------------------
+LEO RULES
+-----------------------------------------------------
+Leo is ALWAYS the recurring hero of Leo Adventures.
 
-Include every important recurring character.
+Never change:
+
+• Leo's name
+• Leo's personality
+• Leo's role
+
+Leo Studio automatically injects Leo's visual appearance using the Character Bible.
+
+Do NOT describe Leo's physical appearance.
+
+RECURRING CHARACTERS
+
+Recurring characters are canonical.
+
+Never rename them.
+
+Never redesign them.
+
+Never change their personality.
+
+Never change their role.
+
+Only describe their actions and emotions.
+
+Leo Studio manages their appearance using the Character Bible.
+
+--------------------------------------------------
+CHARACTERS
+--------------------------------------------------
+
+Return every important recurring character.
 
 Each character MUST contain:
 
@@ -161,14 +460,14 @@ Each character MUST contain:
 - age
 - role
 
-Example
+Example:
 
 {{
 "id":"leo",
 "display_name":"Leo",
 "species":"Lion",
 "gender":"Male",
-"age":"Cub",
+"age":"Child",
 "role":"Hero"
 }}
 
@@ -190,9 +489,9 @@ Example
 "role":"Helper"
 }}
 
-------------------------------------------------------
-locations
-------------------------------------------------------
+--------------------------------------------------
+LOCATIONS
+--------------------------------------------------
 
 Return every important location.
 
@@ -205,9 +504,9 @@ Example
 }}
 ]
 
-------------------------------------------------------
-props
-------------------------------------------------------
+--------------------------------------------------
+PROPS
+--------------------------------------------------
 
 Return every important object.
 
@@ -231,26 +530,53 @@ Never return:
 Never return:
 
 "props": []
-======================================================
+
+--------------------------------------------------
 IMAGE PROMPT RULES
-======================================================
+--------------------------------------------------
 
 The image_prompt should describe ONLY:
 
 • Character actions
-• Character expressions
+• Character emotions
 • Environment
-• Lighting
+• Background
+• Props
+• Camera shot
 • Camera angle
+• Lighting
 • Composition
 
-Never describe recurring character appearance.
+Always refer to recurring characters ONLY by name.
 
-Leo Studio automatically injects appearance.
+Example:
 
-======================================================
-VISUAL QUALITY
-======================================================
+Correct:
+
+"Leo carefully examines the muddy river while Meera points toward the dirty water and Robbie scans the water."
+
+Incorrect:
+
+"A small golden lion cub examines the muddy river..."
+
+Never describe the appearance of recurring characters.
+
+Never mention:
+
+• Fur color
+• Mane
+• Hair
+• Eye color
+• Nose color
+• Clothes
+• Height
+• Species
+• Age
+• Accessories
+
+Leo Studio automatically injects the complete visual appearance using the Character Bible.
+
+Only describe what the characters are DOING.
 
 Every image should include:
 
@@ -261,15 +587,38 @@ Every image should include:
 • Family-friendly atmosphere
 • Rich colors
 
-======================================================
+Every image should NEVER include:
+
+• Character appearance
+• Character clothing
+• Character hairstyle
+• Character colors
+• Character accessories
+• Text
+• Watermarks
+• Logos
+
+For every scene:
+
+The image_prompt should read like movie direction.
+
+Good example:
+
+"Leo carefully connects the solar panel while Meera holds the wires and Robbie projects a holographic blueprint. Warm morning sunlight filters through the forest canopy. Eye-level cinematic medium shot."
+
+Bad example:
+
+"A small golden lion cub with fluffy orange mane..."
+
+--------------------------------------------------
 STORY IDEA
-======================================================
+--------------------------------------------------
 
 {story_idea}
 
-======================================================
-OUTPUT FORMAT
-======================================================
+--------------------------------------------------
+OUTPUT RULES
+--------------------------------------------------
 
 Return ONLY valid JSON.
 
@@ -279,14 +628,38 @@ The JSON is INVALID if:
 - locations is empty
 - props is empty
 
-If any of these arrays would be empty,
-generate the story again before responding.
+If any required array would be empty,
+regenerate the story before responding.
 
 Use EXACTLY this JSON structure.
 
 Do not omit any top-level fields.
 
 Do not leave required arrays empty.
+
+======================================================
+QUALITY CHECK
+======================================================
+
+Before returning the JSON,
+verify that ALL of these are true.
+
+✓ Scene 1 has a strong hook.
+
+✓ Every scene has a purpose.
+
+✓ Every scene contains dialogue.
+
+✓ Every scene creates curiosity.
+
+✓ Every scene advances the story.
+
+✓ Characters stay consistent.
+
+✓ Story has an educational ending.
+
+If any answer is NO,
+rewrite the story before returning JSON.
 
 {json_contract}
 """
@@ -368,11 +741,6 @@ Do not leave required arrays empty.
         scene,
         characters,
     ):
-        """
-        Backward compatibility.
-
-        Existing code still calls build().
-        """
 
         return self.build_image_prompt(
             scene,

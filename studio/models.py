@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
 
 
-# -------------------------------------------------
+# =====================================================
 # Metadata
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Metadata:
@@ -19,9 +19,9 @@ class Metadata:
     version: str
 
 
-# -------------------------------------------------
+# =====================================================
 # Settings
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Settings:
@@ -34,9 +34,9 @@ class Settings:
     target_platform: str
 
 
-# -------------------------------------------------
+# =====================================================
 # Character
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Character:
@@ -61,9 +61,9 @@ class Character:
     locked: bool = False
 
 
-# -------------------------------------------------
+# =====================================================
 # Location
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Location:
@@ -73,9 +73,9 @@ class Location:
     description: str = ""
 
 
-# -------------------------------------------------
+# =====================================================
 # Prop
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Prop:
@@ -85,26 +85,46 @@ class Prop:
     description: str = ""
 
 
-# -------------------------------------------------
+# =====================================================
 # Dialogue
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Dialogue:
 
+    # Identity
     speaker: str
-    emotion: str
+
+    # Dialogue
     text: str
 
+    # Emotion
+    emotion: str = ""
 
-# -------------------------------------------------
+    # Performance
+    action: str = ""
+    expression: str = ""
+    pose: str = ""
+    gesture: str = ""
+
+    # Voice
+    voice_style: str = ""
+    speaking_speed: str = ""
+    pause_after: float = 0.0
+
+    # Camera
+    camera_focus: str = ""
+
+
+# =====================================================
 # Scene
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Scene:
 
     id: str
+
     number: int
 
     title: str
@@ -112,29 +132,54 @@ class Scene:
     narration: str
 
     image_prompt: str
-    animation_prompt: str
 
-    camera: str
-    music: str
-    sfx: str
+    final_image_prompt: str = ""
 
-    dialogues: list[Dialogue] = field(default_factory=list)
+    animation_prompt: str = ""
+
+    camera: str = ""
+
+    music: str = ""
+
+    emotion: str = ""
+
+    # NEW
+    duration: float = 6.0
+
+    sfx: str = ""
+
+    dialogues: list[Dialogue] = field(
+        default_factory=list
+    )
+
+    subtitles: list = field(
+        default_factory=list
+    )
 
 
-# -------------------------------------------------
+# =====================================================
 # Story
-# -------------------------------------------------
+# =====================================================
 
 @dataclass
 class Story:
 
     metadata: Metadata
+
     settings: Settings
 
-    characters: list[Character] = field(default_factory=list)
+    characters: list[Character] = field(
+        default_factory=list
+    )
 
-    locations: list[Location] = field(default_factory=list)
+    locations: list[Location] = field(
+        default_factory=list
+    )
 
-    props: list[Prop] = field(default_factory=list)
+    props: list[Prop] = field(
+        default_factory=list
+    )
 
-    scenes: list[Scene] = field(default_factory=list)
+    scenes: list[Scene] = field(
+        default_factory=list
+    )

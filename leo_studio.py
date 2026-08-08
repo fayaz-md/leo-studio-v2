@@ -28,7 +28,9 @@ def build_script(story):
         lines.append("")
         lines.append(f"**Image Prompt:** {scene.image_prompt}")
         lines.append("")
-        lines.append(f"**Animation Prompt:** {scene.animation_prompt}")
+        lines.append(
+            f"**Animation Prompt:** {scene.animation_prompt}"
+        )
         lines.append("")
         lines.append("---")
         lines.append("")
@@ -82,22 +84,45 @@ def main():
     print(f"Characters detected: {len(characters)}")
 
     for character in characters:
-        print(f"  ✓ {character['display_name']} ({character['species']})")
+        print(
+            f"  ✓ {character['display_name']} ({character['species']})"
+        )
 
     project = create_project(
         idea,
         PROJECTS_DIR,
     )
 
+    # -----------------------------------------
+    # Save master story
+    # -----------------------------------------
+
     StorySerializer.save(
         story,
         project / "story.json",
     )
 
+    # -----------------------------------------
+    # Save individual scene files
+    # -----------------------------------------
+
+    StorySerializer.save_scenes(
+        story,
+        project,
+    )
+
+    # -----------------------------------------
+    # Save script
+    # -----------------------------------------
+
     save_text(
         project / "script.md",
         build_script(story),
     )
+
+    # -----------------------------------------
+    # Save image prompts
+    # -----------------------------------------
 
     save_text(
         project / "image_prompts.md",

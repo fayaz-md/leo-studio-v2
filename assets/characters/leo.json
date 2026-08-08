@@ -3,21 +3,36 @@
     "display_name": "Leo",
 
     "species": "Lion",
-
-    "gender": "male",
-
-    "age": "child",
-
-    "role": "hero",
+    "gender": "Male",
+    "age": "Child",
+    "role": "Hero",
 
     "voice_profile": "leo",
 
     "appearance": {
         "body_color": "Golden Yellow",
         "mane_color": "Orange",
-        "eye_color": "Brown",
+        "eye_color": "Warm Brown",
         "nose_color": "Pink",
-        "height": "Small Cub"
+        "height": "Small Cub",
+        "body_type": "Cute rounded cub",
+        "fur_style": "Soft fluffy fur",
+        "tail": "Short fluffy tail",
+        "ears": "Rounded ears",
+        "expression": "Friendly smile"
+    },
+    
+    "visual_description": "Leo is a cute golden-yellow lion cub with soft fluffy fur, a bright orange mane, warm brown expressive eyes, a small pink nose, rounded ears, and a short fluffy tail. He wears a blue sleeveless vest and always has a friendly, curious smile. He is a Pixar-quality 3D animated character with expressive facial emotions, soft cinematic fur, and family-friendly proportions.",
+    
+    "clothing": {
+        "top": "Blue sleeveless vest",
+        "bottom": "None",
+        "shoes": "None"
+    },
+
+    "accessories": {
+        "bag": "",
+        "tools": ""
     },
 
     "personality": {
@@ -27,25 +42,61 @@
             "Funny",
             "Kind"
         ],
-
         "likes": [
             "Helping Others",
-            "Playing"
+            "Science",
+            "Adventure"
         ],
-
         "dislikes": [
-            "Bullies",
+            "Pollution",
+            "Bullying",
             "Lies"
         ]
     },
 
+    "expressions": {
+        "default": "Happy smile",
+        "sad": "Drooping ears",
+        "excited": "Wide sparkling eyes",
+        "thinking": "Paw on chin",
+        "surprised": "Wide open mouth"
+    },
+
+    "animation": {
+        "walk": "Energetic cub walk",
+        "run": "Playful bounce",
+        "idle": "Tail gently wagging",
+        "talk": "Expressive paw gestures"
+    },
+
+    "rendering": {
+        "style": "Pixar",
+        "material": "Soft fur",
+        "lighting": "Warm cinematic lighting"
+    },
+
+    "prompt_keywords": [
+        "Pixar",
+        "3D",
+        "Cute lion cub",
+        "Golden fur",
+        "Orange mane",
+        "Expressive eyes",
+        "Family friendly"
+    ],
+
     "relationships": {
-        "friends": [],
+        "friends": [
+            "meera",
+            "robbie"
+        ],
         "family": [],
         "enemies": []
     },
 
+    "catchphrase": "Let's help!",
+
     "default_emotion": "happy",
 
-    "catchphrase": "Let's help!"
+    "locked": true
 }

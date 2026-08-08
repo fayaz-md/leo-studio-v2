@@ -35,3 +35,22 @@ logs/
 # Temporary files
 *.tmp
 *.log
+
+# Generated files
+storyboard.json
+timeline.json
+production_report.json
+folder_structure.txt
+
+# Generated projects
+projects/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Environment
+.env

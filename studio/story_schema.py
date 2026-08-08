@@ -55,11 +55,30 @@ class StorySchema:
             "camera":"",
             "music":"",
             "sfx":"",
+
             "dialogues":[
                 {
                     "speaker":"",
+
+                    "text":"",
+
                     "emotion":"happy",
-                    "text":""
+
+                    "action":"",
+
+                    "expression":"",
+
+                    "pose":"",
+
+                    "gesture":"",
+
+                    "voice_style":"",
+
+                    "speaking_speed":"",
+
+                    "camera_focus":"",
+
+                    "pause_after":0.5
                 }
             ]
         }

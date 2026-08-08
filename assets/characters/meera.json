@@ -1,10 +1,105 @@
 {
     "id": "meera",
     "display_name": "Meera",
+
     "species": "Human",
+    "gender": "Female",
+    "age": "Child",
+    "role": "Friend",
+
     "voice_profile": "meera",
-    "appearance": {},
-    "personality": {},
-    "relationships": {},
-    "locked": false
+
+    "appearance": {
+        "skin_tone": "Warm Indian wheatish complexion",
+        "hair_color": "Black",
+        "hair_style": "Twin pigtails tied with red ribbons",
+        "eye_color": "Dark Brown",
+        "height": "Short Child",
+        "body_type": "Slim",
+        "face_shape": "Round face",
+        "nose": "Small",
+        "smile": "Bright cheerful smile"
+    },
+    "visual_description": "Meera is a cheerful Indian girl with a warm wheatish complexion, expressive dark brown eyes, and black twin pigtails tied with bright red ribbons. She wears a bright yellow short-sleeve T-shirt, blue denim dungarees, white ankle socks, and red sneakers. She carries a small green science backpack and has a warm, confident smile. She is a Pixar-quality 3D animated child with expressive emotions and friendly proportions.",
+    
+    "clothing": {
+        "top": "Bright yellow short-sleeve T-shirt",
+        "bottom": "Blue denim dungarees",
+        "shoes": "Red sneakers",
+        "socks": "White ankle socks"
+    },
+
+    "accessories": {
+        "watch": "Blue digital watch",
+        "backpack": "Small green science backpack"
+    },
+
+    "personality": {
+        "traits": [
+            "Smart",
+            "Curious",
+            "Kind",
+            "Creative"
+        ],
+        "likes": [
+            "Science",
+            "Nature",
+            "Experiments",
+            "Helping Friends"
+        ],
+        "dislikes": [
+            "Pollution",
+            "Wasting Water",
+            "Littering"
+        ]
+    },
+
+    "expressions": {
+        "default": "Warm friendly smile",
+        "happy": "Wide joyful smile",
+        "thinking": "Hand on chin",
+        "surprised": "Raised eyebrows and open mouth",
+        "sad": "Gentle worried expression",
+        "excited": "Sparkling eyes with big smile"
+    },
+
+    "animation": {
+        "walk": "Energetic child walk",
+        "run": "Fast playful run",
+        "idle": "Hands behind back while smiling",
+        "talk": "Expressive hand gestures"
+    },
+
+    "rendering": {
+        "style": "Pixar",
+        "material": "Soft fabric clothing",
+        "lighting": "Warm cinematic lighting"
+    },
+
+    "prompt_keywords": [
+        "Pixar",
+        "3D",
+        "Cute Indian girl",
+        "Twin pigtails",
+        "Yellow T-shirt",
+        "Blue denim dungarees",
+        "Red sneakers",
+        "Friendly smile",
+        "Family friendly"
+    ],
+
+    "relationships": {
+        "friends": [
+            "leo",
+            "robbie"
+        ],
+        "family": [],
+        "enemies": []
+    },
+
+    "catchphrase": "Science can solve it!",
+
+    "default_emotion": "happy",
+
+    "locked": true
 }
