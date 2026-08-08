@@ -37,6 +37,7 @@ class SarvamProvider:
         text,
         voice_profile,
         output_path,
+        performance=None,
     ):
 
         if not text:
@@ -67,13 +68,36 @@ class SarvamProvider:
             "hi-IN",
         )
 
+        performance = (
+            performance
+            if performance
+            else {}
+        )
+
+        request = {
+            "text": text,
+            "language_code": language_code,
+            "speaker": voice_id,
+            "model": "bulbul:v3",
+            "output_audio_codec": "wav",
+        }
+
+        # Bulbul v3 supported performance controls
+        if "pace" in performance:
+
+            request["pace"] = performance[
+                "pace"
+            ]
+
+        if "temperature" in performance:
+
+            request["temperature"] = performance[
+                "temperature"
+            ]
+
         response = (
             self.client.text_to_speech.convert(
-                text=text,
-                language_code=language_code,
-                speaker=voice_id,
-                model="bulbul:v3",
-                output_audio_codec="wav",
+                **request
             )
         )
 

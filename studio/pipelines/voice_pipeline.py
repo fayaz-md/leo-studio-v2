@@ -27,6 +27,7 @@ class VoicePipeline:
     ):
 
         if not story:
+
             raise ValueError(
                 "Story is required."
             )
@@ -82,11 +83,21 @@ class VoicePipeline:
                     / filename
                 )
 
+                dialogue_data = {
+                    "speaker": dialogue.speaker,
+                    "text": dialogue.text,
+                    "emotion": dialogue.emotion,
+                    "voice_style": dialogue.voice_style,
+                    "speaking_speed": (
+                        dialogue.speaking_speed
+                    ),
+                    "pause_after": (
+                        dialogue.pause_after
+                    ),
+                }
+
                 result = self.renderer.render(
-                    {
-                        "speaker": dialogue.speaker,
-                        "text": dialogue.text,
-                    },
+                    dialogue_data,
                     str(output_path),
                 )
 

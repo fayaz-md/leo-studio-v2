@@ -12,6 +12,9 @@ from pathlib import Path
 from studio.voice_engine.voice_assignment import (
     VoiceAssignment,
 )
+from studio.voice_engine.voice_performance import (
+    VoicePerformance,
+)
 from studio.voice_engine.sarvam_provider import (
     SarvamProvider,
 )
@@ -23,6 +26,10 @@ class VoiceRenderer:
 
         self.voice_assignment = (
             VoiceAssignment()
+        )
+
+        self.voice_performance = (
+            VoicePerformance()
         )
 
         self.provider = SarvamProvider()
@@ -67,17 +74,48 @@ class VoiceRenderer:
             exist_ok=True,
         )
 
+        text = dialogue.get(
+            "text",
+            "",
+        )
+
+        emotion = dialogue.get(
+            "emotion",
+            "happy",
+        )
+
+        voice_style = dialogue.get(
+            "voice_style",
+            "",
+        )
+
+        speaking_speed = dialogue.get(
+            "speaking_speed",
+            "",
+        )
+
+        pause_after = dialogue.get(
+            "pause_after",
+            0.0,
+        )
+
+        performance = (
+            self.voice_performance.build(
+                emotion=emotion,
+                voice_style=voice_style,
+                speaking_speed=speaking_speed,
+            )
+        )
+
         self.provider.synthesize(
-            text=dialogue.get(
-                "text",
-                "",
-            ),
+            text=text,
             voice_profile=assignment[
                 "voice_profile"
             ],
             output_path=str(
                 output_file
             ),
+            performance=performance,
         )
 
         return {
@@ -96,10 +134,12 @@ class VoiceRenderer:
             "language_code": assignment[
                 "language_code"
             ],
-            "text": dialogue.get(
-                "text",
-                "",
-            ),
+            "text": text,
+            "emotion": emotion,
+            "voice_style": voice_style,
+            "speaking_speed": speaking_speed,
+            "pause_after": pause_after,
+            "performance": performance,
             "audio_path": str(
                 output_file
             ),
