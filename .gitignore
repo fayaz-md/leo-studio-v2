@@ -54,3 +54,11 @@ __pycache__/
 
 # Environment
 .env
+
+# Node dependencies
+node_modules/
+
+# Generated audio/output
+output/
+*.wav
+*.mp3
