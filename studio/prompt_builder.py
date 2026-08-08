@@ -8,6 +8,9 @@ from studio.config import (
 
 from studio.story_schema import StorySchema
 
+from studio.prompt.character_prompt_builder import (
+    CharacterPromptBuilder,
+)
 
 class PromptBuilder:
     """
@@ -32,7 +35,9 @@ class PromptBuilder:
             "vibrant colors, "
             "expressive emotions"
         )
-
+        self.character_prompt_builder = (
+            CharacterPromptBuilder()
+        )
     # ======================================================
     # STORY PROMPT
     # ======================================================
@@ -40,6 +45,7 @@ class PromptBuilder:
     def build_story_prompt(
         self,
         story_idea,
+        characters=None,
         main_character="Leo",
         series=DEFAULT_SERIES,
         language=DEFAULT_LANGUAGE,
@@ -47,7 +53,16 @@ class PromptBuilder:
     ):
 
         json_contract = StorySchema.json_contract()
+        character_rules = (
+            self.character_prompt_builder.build(
+                characters or []
+            )
+        )
+        print("\n========== CHARACTER RULES ==========\n")
 
+        print(character_rules)
+
+        print("\n=====================================\n")
         return f"""
 You are an award-winning Pixar writer, children's storyteller and animation director.
 
@@ -295,40 +310,7 @@ End with:
 
 Do NOT skip any stage.
 
-======================================================
-DIALOGUE RULES
-======================================================
-
-Every scene MUST contain dialogue.
-
-Minimum:
-1 dialogue line.
-
-Preferred:
-2–4 dialogue lines.
-
-Dialogue should be short.
-
-Dialogue should sound natural.
-
-Every recurring character should speak according to
-their personality.
-
-Leo
-Curious
-Brave
-Funny
-Optimistic
-
-Meera
-Smart
-Calm
-Kind
-
-Robbie
-Logical
-Helpful
-Friendly Robot
+{character_rules}
 
 Dialogue should reveal personality.
 

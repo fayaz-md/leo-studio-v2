@@ -1,5 +1,10 @@
 """
-Leo Studio Dialogue Brain
+Leo Studio
+
+Dialogue Brain
+
+Validates generated dialogue without
+rewriting the original text.
 """
 
 from studio.brain.character_brain import CharacterBrain
@@ -23,7 +28,7 @@ class DialogueBrain:
         dialogue = dialogue.strip()
 
         # -------------------------------------------------
-        # Remove forbidden dialogue
+        # Validate dialogue
         # -------------------------------------------------
 
         if not self.character_brain.validate_dialogue(
@@ -31,33 +36,14 @@ class DialogueBrain:
             dialogue,
         ):
 
-            phrase = self.character_brain.favorite_phrase(
-                character
+            print(
+                f"[Dialogue Warning] "
+                f"{character}: "
+                f"dialogue contains a forbidden phrase."
             )
 
-            if phrase:
-                return phrase
-
-            return dialogue
-
         # -------------------------------------------------
-        # Add signature opening
+        # Preserve original dialogue
         # -------------------------------------------------
-
-        phrase = self.character_brain.favorite_phrase(
-            character
-        )
-
-        if phrase:
-
-            if phrase.lower() not in dialogue.lower():
-
-                if len(dialogue) < 60:
-
-                    dialogue = (
-                        phrase
-                        + " "
-                        + dialogue
-                    )
 
         return dialogue

@@ -100,7 +100,8 @@ class StoryGenerator:
         # -------------------------------------------------
 
         prompt = self.prompt_builder.build_story_prompt(
-            story_idea=story_idea
+            story_idea=story_idea,
+            characters=self.character_bible.all(),
         )
 
         # -------------------------------------------------
@@ -278,6 +279,19 @@ class StoryGenerator:
             production_report,
             "production_report.json",
         )
+        print("\n========== FINAL DIALOGUES ==========\n")
+
+        for scene in story.scenes:
+
+            print(f"\nScene {scene.number}")
+
+            for dialogue in scene.dialogues:
+
+                print(
+                    f"{dialogue.speaker}: {dialogue.text}"
+                )
+
+        print("\n====================================\n")
         return story
 
     # =================================================
