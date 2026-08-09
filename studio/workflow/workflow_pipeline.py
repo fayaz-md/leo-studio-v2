@@ -62,7 +62,12 @@ class WorkflowPipeline:
 
         voice_results = (
             self.voice_pipeline.process(
-                story
+                story,
+                output_dir=(
+                    audio_dir
+                    if audio_dir is not None
+                    else "output/audio"
+                ),
             )
         )
 
@@ -111,9 +116,30 @@ class WorkflowPipeline:
 
             for result in voice_results:
 
-                if result.get(
-                    "scene"
-                ) != scene_number:
+                audio_path = result.get(
+                    "audio_path"
+                )
+
+                if not audio_path:
+
+                    continue
+
+                audio_path = Path(
+                    audio_path
+                )
+
+                filename = (
+                    audio_path.stem
+                )
+
+                expected_prefix = (
+                    f"scene_"
+                    f"{scene_number:02d}_"
+                )
+
+                if not filename.startswith(
+                    expected_prefix
+                ):
 
                     continue
 
@@ -121,17 +147,13 @@ class WorkflowPipeline:
                     "speaker"
                 )
 
-                audio_file = result.get(
-                    "audio_file"
-                )
+                if not speaker:
 
-                if speaker and audio_file:
+                    continue
 
-                    scene_audio_files[
-                        speaker.lower()
-                    ] = Path(
-                        audio_file
-                    )
+                scene_audio_files[
+                    speaker.lower()
+                ] = audio_path
 
             if not scene_audio_files:
 

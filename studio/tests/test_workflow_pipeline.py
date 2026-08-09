@@ -31,7 +31,8 @@ class TestWorkflowPipeline(unittest.TestCase):
         )
 
         workflow.voice_pipeline.process.assert_called_once_with(
-            story
+            story,
+            output_dir="output/audio",
         )
 
         self.assertEqual(

@@ -73,8 +73,8 @@ class TestWorkflowVideoIntegration(unittest.TestCase):
             )
 
             voice_file = (
-                temp_dir
-                / "leo.wav"
+                audio_dir
+                / "scene_01_leo_001.wav"
             )
 
             voice_file.write_bytes(
@@ -143,7 +143,7 @@ class TestWorkflowVideoIntegration(unittest.TestCase):
                         {
                             "scene": 1,
                             "speaker": "leo",
-                            "audio_file": voice_file,
+                            "audio_path": voice_file,
                         }
                     ]
 
@@ -180,7 +180,8 @@ class TestWorkflowVideoIntegration(unittest.TestCase):
             )
 
             pipeline.voice_pipeline.process.assert_called_once_with(
-                story
+                story,
+                output_dir=audio_dir,
             )
 
             assembler.assemble.assert_called_once()
